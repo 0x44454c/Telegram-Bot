@@ -1,4 +1,5 @@
 package.json
 client_secrets.json
+credentials.json
 src/__pycache__
 src/.env

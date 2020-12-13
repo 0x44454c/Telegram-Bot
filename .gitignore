@@ -1,0 +1,4 @@
+package.json
+client_secrets.json
+src/__pycache__
+src/.env

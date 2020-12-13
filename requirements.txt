@@ -1,0 +1,3 @@
+pyDrive
+python-telegram-bot
+python-dotenv

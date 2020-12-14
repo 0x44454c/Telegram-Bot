@@ -1,12 +1,19 @@
 
 START = "Hello {}!"
 PROCESSING = "Please wait while I process..."
-DOWNLOADING = """📥 Downloading the file...
+DOWNLOADING = """📥 {}
 <b>FILE:</b> {}
 <b>SIZE:</b> {}
-<b>Download Speed:</b> {}/s
+<b>Download Speed:</b> {}
+<b>ETA:</b> {}
 Progress:
+[{}/{}] [{}%]
 {}"""
-DOWNLOADED = "<b>File has been downloaded!</b>"
+# DOWNLOADING_V2 = "📥\n <b>Downloading the file to my server...</b>"
+DOWNLOADED = """📥 {}
+<b>FILE:</b> {}
+<b>SIZE:</b> {}
+<b>Download Speed:</b> {}
+<b>TIME ELAPSED:</b> {}"""
 DOWN_ERR = "Can't download file!🤷‍♂️"
 URL_ERR = "Please provide correct url!"

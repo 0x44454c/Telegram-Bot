@@ -47,13 +47,12 @@ def download(update, context):
 			with open(filename, 'wb') as f:
 				downloaded = 0
 				progressBar = f"[0KB][{downloaded}%][{20*'_'}]"
-				sent_message.edit_text(MSG.DOWNLOADING.format(filename, au.size(length),'0 KB', progressBar))
+				sent_message.edit_text(MSG.DOWNLOADING.format(filename, au.size(length),'0 KB', progressBar), parse_mode=ParseMode.HTML)
 				for data in response.iter_content(1024):
 					downloaded += len(data)
 					f.write(data)
 					done = int(20*downloaded/length)
-					progressBar = '[{}][{}%] [{}{}]'.format(au.size(downloaded),
-						round(100*downloaded/length, 1), '█'*done, '_'*(20-done))
+					progressBar = '[{} of {}] [{}%]\n[{}{}]'.format(au.size(downloaded), au.size(length), round(100*downloaded/length, 1), '█'*done, '_'*(20-done))
 					# print(filename, au.size(length), progressBar)
 					sent_message.edit_text(MSG.DOWNLOADING.format(filename, au.size(length),au.size(downloaded/(time.time()-start)), progressBar), parse_mode = ParseMode.HTML)
 				f.close()

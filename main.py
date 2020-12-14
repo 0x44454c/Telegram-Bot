@@ -48,7 +48,7 @@ def download(update, context):
 				downloaded = 0
 				progressBar = f"[0KB][{downloaded}%][{20*'_'}]"
 				sent_message.edit_text(MSG.DOWNLOADING.format(filename, au.size(length),'0 KB', progressBar), parse_mode=ParseMode.HTML)
-				for data in response.iter_content(1024*1024*100):
+				for data in response.iter_content(1024*1024*5):
 					downloaded += len(data)
 					f.write(data)
 					done = int(20*downloaded/length)

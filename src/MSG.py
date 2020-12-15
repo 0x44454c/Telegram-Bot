@@ -17,7 +17,8 @@ DOWNLOADED = """📥 {}
 <b>TIME ELAPSED:</b> {}"""
 TRY_UPLOAD = "Please wait!\nTrying to upload the file to Google Drive..."
 UPLOADING = "Uploading your file..."
-UPLOADED = "<b>Your file has been uploaded.</b>"
+UPLOADED = """<b>Your file has been uploaded.</b>\n
+<a href={}><b>VIEW HERE</b></a>"""
 
 # errors
 DOWNLOAD_UNSUCCESSFUL = "File downloading was unsuccessful!"

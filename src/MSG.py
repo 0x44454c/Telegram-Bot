@@ -15,5 +15,5 @@ DOWNLOADED = """📥 {}
 <b>SIZE:</b> {}
 <b>Download Speed:</b> {}
 <b>TIME ELAPSED:</b> {}"""
-DOWN_ERR = "Can't download file!🤷‍♂️"
+DOWN_ERR = "Can't download file!🤷‍♂️\nError: {}"
 URL_ERR = "Please provide correct url!"

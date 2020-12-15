@@ -1,7 +1,7 @@
 
 START = "Hello {}!"
 PROCESSING = "Please wait while I process..."
-DOWNLOADING = """📥 {}
+DOWNLOADING = """📥  {}\n
 <b>FILE:</b> {}
 <b>SIZE:</b> {}
 <b>Download Speed:</b> {}
@@ -15,5 +15,13 @@ DOWNLOADED = """📥 {}
 <b>SIZE:</b> {}
 <b>Download Speed:</b> {}
 <b>TIME ELAPSED:</b> {}"""
-DOWN_ERR = "Can't download file!🤷‍♂️\nError: {}"
+TRY_UPLOAD = "Please wait!\nTrying to upload the file to Google Drive..."
+UPLOADING = "Uploading your file..."
+UPLOADED = "<b>Your file has been uploaded.</b>"
+
+# errors
+DOWNLOAD_UNSUCCESSFUL = "File downloading was unsuccessful!"
+DOWN_ERR = "Can't download file!🤷‍♂"
+FILE_NOT_EXISTS = "Sorry for the inconvenience! You need repeat the process."
+UPLOAD_ERR = "Can't upload file!🤷‍♂"
 URL_ERR = "Please provide correct url!"

@@ -81,10 +81,7 @@ def download(update, context)->None:
 						sent_message1.edit_text(MSG.UPLOADING, parse_mode=ParseMode.HTML)
 						# uploads file
 						file_to_upload.Upload(param={'supportsTeamDrives': True, 'http': http})
-						# file_to_upload.FetchMetadata()
-						# file_to_upload.InsertPermission({'type':  'anyone', 'value': 'anyone', 'role':  'reader', 'withLink': True})
-						down_link = file_to_upload['webContentLink']
-						sent_message1.edit_text(MSG.UPLOADED.format(down_link), parse_mode=ParseMode.HTML)
+						sent_message1.edit_text(MSG.UPLOADED.format(file_to_upload['webContentLink']), parse_mode=ParseMode.HTML)
 						# delete file after uploading
 						try:
 							os.remove(dest+filename)

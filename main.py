@@ -50,10 +50,10 @@ def download(update, context)->None:
 		try:
 			DL = SmartDL(url, dest, progress_bar=False)
 			DL.start(blocking=False)
-
 			while not DL.isFinished(): # sends the user downloading status
-				sent_message.edit_text(MSG.DOWNLOADING.format(DL.get_status().upper(), filename, size, DL.get_speed(human=True), utils.time_human(DL.get_eta(), fmt_short=True), DL.get_dl_size(human=True), size, round(DL.get_progress()*100, 2), DL.get_progress_bar()), parse_mode=ParseMode.HTML)
-				time.sleep(1)
+				if DL.get_status() == 'downloading':
+					sent_message.edit_text(MSG.DOWNLOADING.format(DL.get_status().upper(), filename, size, DL.get_speed(human=True), utils.time_human(DL.get_eta(), fmt_short=True), DL.get_dl_size(human=True), size, round(DL.get_progress()*100, 2), DL.get_progress_bar()), parse_mode=ParseMode.HTML)
+					time.sleep(1)
 
 			if DL.isSuccessful(): # sends succesful status to the user
 				sent_message.edit_text(MSG.DOWNLOADED.format(DL.get_status().upper(), filename, size, DL.get_speed(human=True), DL.get_dl_time(human=True)), parse_mode=ParseMode.HTML)

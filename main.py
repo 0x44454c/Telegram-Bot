@@ -43,8 +43,7 @@ def download(update, context)->None:
 	# send processing status to the user
 	context.bot.send_chat_action(
 		chat_id=update.effective_chat.id, action=ChatAction.TYPING)
-	sent_message = update.message.reply_text(
-		chat_id=update.effective_chat.id, text=MSG.PROCESSING, parse_mode=ParseMode.HTML)
+	sent_message = update.message.reply_text(text=MSG.PROCESSING, parse_mode=ParseMode.HTML)
 
 	# initiate downloading if url has a correct filename at last and if it doesn't redirects
 	if filename is not None and "." in filename:

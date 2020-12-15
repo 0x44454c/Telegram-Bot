@@ -1,6 +1,7 @@
 package.json
-client_secrets.json
+client_secrets----abc.json
 credentials.json
 src/__pycache__
 src/.env
 Downloads
+settings.yaml

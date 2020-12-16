@@ -4,8 +4,8 @@ import shutil
 import time
 from src import MSG
 from src.auxiliary import AUX
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
+from pydrive2.auth import GoogleAuth
+from pydrive2.drive import GoogleDrive
 from pySmartDL import SmartDL, utils
 from telegram.ext import (Updater, CommandHandler, Filters, MessageHandler, CallbackQueryHandler)
 from telegram import (ParseMode, ChatAction, InlineKeyboardButton)
@@ -13,7 +13,8 @@ import logging
 
 
 # Creating Log
-logging.basicConfig(filename="bot.log", filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename=os.path.join('Logs', 'bot-'+time.time()+'.log'), filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.info("Bot has started!")
 # create objects
 au = AUX()
 
@@ -48,7 +49,7 @@ def download(update, context)->None:
 	# initiate downloading if url has a correct filename at last and if it doesn't redirects
 	if filename is not None and "." in filename:
 		try:
-			DL = SmartDL(url, dest, progress_bar=False)
+			DL = SmartDL(url, dest, progress_bar=False, threads=2)
 			DL.start(blocking=False)
 			while not DL.isFinished(): # sends the user downloading status
 				if DL.get_status() == 'downloading':
@@ -95,6 +96,15 @@ def download(update, context)->None:
 					except: # sends error msg
 						logging.error("Uploading Exception occured", exc_info=True)
 						sent_message1.edit_text(MSG.UPLOAD_ERR, parse_mode=ParseMode.HTML)
+						try:
+							os.remove(dest+filename)
+						except:
+							logging.error("Can't remove file!", exc_info=True)
+							try:
+								shutil.rmtree(dest+filename)
+							except:
+								logging.critical("Impossible to remove the file!")
+
 				else: # sends file non existing msg
 					logging.error("File doesn't exists!")
 					sent_message1.edit_text(MSG.FILE_NOT_EXISTS, parse_mode=ParseMode.HTML)
